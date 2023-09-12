@@ -20,16 +20,17 @@ public class JavaController {
     }
 
     @GetMapping("/add")
-    public String add(@RequestParam String question,
-                      @RequestParam String answer) {
+    public Question addQuestion(@RequestParam String question,
+                                @RequestParam String answer) {
         return javaQuestionService.add(question, answer);
     }
     @GetMapping("/remove")
-    public Question remove(@RequestParam Question question) {
-        return javaQuestionService.remove(question);
+    public Question removeQuestion(@RequestParam String question,
+                                   @RequestParam String answer) {
+        return javaQuestionService.remove(question, answer);
     }
     @GetMapping()
-    public Collection<Question> getAll() {
+    public Collection<Question> getQuestions() {
         return javaQuestionService.getAll();
     }
 }

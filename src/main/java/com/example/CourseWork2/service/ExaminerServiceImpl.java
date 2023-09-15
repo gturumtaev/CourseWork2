@@ -22,10 +22,9 @@ public class ExaminerServiceImpl implements ExaminerService{
     @Override
     public Collection<Question> getQuestions(int amount) {
         if (amount > javaQuestionService.getAll().size()) {
-            throw new IncorrectAmountOfQuestionsException();
+            throw new IncorrectAmountOfQuestionsException("Введено значение, превышающее количество доступных вопросов");
         }
         Set<Question> questions = new HashSet<>();
-
         while (questions.size() < amount) {
             questions.add(javaQuestionService.getRandomQuestion());
         }

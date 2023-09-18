@@ -3,34 +3,19 @@ package com.example.CourseWork2.entity;
 import java.util.Objects;
 
 public class Question {
-    private String question;
-    private String answer;
+    private final String question;
+    private final String answer;
 
     public Question(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }
-
-    public Question(Question question) {
-
-    }
-
     public String getQuestion() {
         return question;
     }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
     public String getAnswer() {
         return answer;
     }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

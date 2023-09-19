@@ -43,7 +43,7 @@ public class JavaQuestionService implements QuestionService{
     @Override
     public Question getRandomQuestion() {
         int max = questions.size();
-        if (questions.size() == 0) {
+        if (questions.isEmpty()) {
            throw new NotEnoughQuestionsException("Вопросы не обнаружены, попробуйте добавить вопросы и повторить попытку");
         }
         List<Question> questionList = new ArrayList<>(questions);

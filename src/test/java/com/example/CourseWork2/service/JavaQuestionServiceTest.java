@@ -4,6 +4,7 @@ import com.example.CourseWork2.entity.Question;
 import com.example.CourseWork2.excrption.NotEnoughQuestionsException;
 import com.example.CourseWork2.excrption.QuestionAlreadyAddedException;
 import com.example.CourseWork2.excrption.QuestionNotFoundException;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,10 @@ class JavaQuestionServiceTest {
         Question expectedQuestion = new Question("Была луна?", "Нет");
 
         assertEquals(expectedQuestion, listOfQuestions.add("Была луна?", "Нет"));
-        assertIterableEquals(expectedSet, listOfQuestions.getAll());
+        Assertions.assertThat(listOfQuestions.getAll())
+                .hasSize(4)
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsExactlyInAnyOrderElementsOf(expectedSet);
     }
     @Test
     void add_QuestionAlreadyAddedException() {
